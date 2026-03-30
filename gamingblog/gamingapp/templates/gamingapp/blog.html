@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block content    %}
+
+
+{% for post in object_list    %}
+<div class="card">
+
+    <h2> <a href="{% url 'post_detail' post.pk %}"> {{post.title}}</a></h2>
+    <p>{{post.content|truncatewords:5}}</p>
+    <h5>{{post.published_date}}</h5>
+</div>
+{% empty %}
+<div>No posts</div>
+{% endfor %}
+
+{% endblock %}
